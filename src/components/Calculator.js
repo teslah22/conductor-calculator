@@ -1,16 +1,15 @@
-import React, {Component } from 'react'
-
+import React, {Component } from 'react';
+import {card, button} from 'reactstrap';
 
 
 class Calculator extends Component {
 
     render() {
-        const a = 2;
-        const b = 3;
+
         return (
-            <h1>
-                This is the result {a * b}
-            </h1>
+            <button>
+                This is the result
+            </button>
         )
     }
 }
