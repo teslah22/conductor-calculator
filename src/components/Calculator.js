@@ -1,5 +1,5 @@
 import React, {Component } from 'react';
-import {card, button} from 'reactstrap';
+import Conductors from './Conductors.js'
 
 
 class Calculator extends Component {
@@ -7,9 +7,7 @@ class Calculator extends Component {
     render() {
 
         return (
-            <button>
-                This is the result
-            </button>
+            <Conductors/>
         )
     }
 }
