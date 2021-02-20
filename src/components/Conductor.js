@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 
-class Conductor extends Component {
+class Conductor extends React.PureComponent  {
     render() {
         return (
             <tr>

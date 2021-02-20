@@ -4,7 +4,7 @@ import data from './data/PowerConductors.json';
 import Conductor from './Conductor.js'
 
 
-class Conductors extends Component {
+class Conductors extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
