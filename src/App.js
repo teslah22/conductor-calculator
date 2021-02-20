@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
-import Calculator from 'components/main/SagCalcContainer';
+import SagCalcContainer from "components/main/SagCalcContainer";
+
 
 function App() {
 
   return (
     <div className="App">
+        <SagCalcContainer/>
 
-        <Calculator/>
     </div>
   );
 }

@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Card, CardBody, Table} from 'reactstrap';
-import data from 'components/data/PowerConductors.json';
-import Conductor from 'components/Conductor.js'
+import data from "components/data/PowerConductors.json";
+import Conductor from "components/Conductor.js";
 
 
 class Conductors extends React.PureComponent {

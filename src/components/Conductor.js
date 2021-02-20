@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 
 class Conductor extends React.PureComponent  {
@@ -15,8 +15,6 @@ class Conductor extends React.PureComponent  {
                 <td>{this.props.conductor.Nsn}</td>
                 <td>{this.props.conductor.Nsk}</td>
                 <td>{this.props.conductor.Type}</td>
-
-
             </tr>
         )
     }

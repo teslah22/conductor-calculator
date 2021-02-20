@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container} from 'reactstrap';
-import {Route, Switch} from 'react-router-dom'
-import {ROUTE_CALCULATOR, ROUTE_CONDUCTORS} from "constants/Routes";
+import {Route, Switch} from 'react-router-dom';
+import {ROUTE_CALCULATOR, ROUTE_CONDUCTORS} from 'constants/Routes';
 import Conductors from "components/Conductors";
 import Calculator from "components/Calculator";
 
