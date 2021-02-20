@@ -1,5 +1,5 @@
 import React, {Component } from 'react';
-import Conductors from './Conductors.js'
+import Conductors from 'components/Conductors.js'
 
 
 class Calculator extends React.PureComponent {

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Card, CardBody, Table} from 'reactstrap';
-import data from './data/PowerConductors.json';
-import Conductor from './Conductor.js'
+import data from 'components/data/PowerConductors.json';
+import Conductor from 'components/Conductor.js'
 
 
 class Conductors extends React.PureComponent {
@@ -70,6 +70,18 @@ class Conductors extends React.PureComponent {
                                 <th>Nsn</th>
                                 <th>Nsk</th>
                                 <th>Type</th>
+                            </tr>
+                            <tr>
+                                <th>-</th>
+                                <th>mm<sup>2</sup></th>
+                                <th>mm</th>
+                                <th>N/m</th>
+                                <th>x10<sup>-6</sup></th>
+                                <th>mm<sup>2</sup>/Nx10<sup>-6</sup></th>
+                                <th>kN</th>
+                                <th>kN</th>
+                                <th>kN</th>
+                                <th>-</th>
                             </tr>
                             </thead>
                             <tbody>
