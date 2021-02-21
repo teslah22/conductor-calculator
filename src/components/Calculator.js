@@ -1,5 +1,6 @@
 import React, {Component } from 'react';
 import Conductors from './Conductors.js'
+import {Card} from "reactstrap";
 
 
 class Calculator extends React.PureComponent {
@@ -7,7 +8,7 @@ class Calculator extends React.PureComponent {
     render() {
 
         return (
-           <div>Tu bedze kalkulator</div>
+           <Card>Tu bedze kalkulator</Card>
         )
     }
 }

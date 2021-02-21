@@ -1,17 +1,5 @@
 [
  {
-   "Conductor_Name": "-",
-   "Cross_section": "mm2",
-   "Diameter": "mm",
-   "Unit_weight": "N/m",
-   "Alfa_param": "x10-6",
-   "Beta_param": "mm2/Nx10-6",
-   "RTS": "kN",
-   "Nsn": "kN",
-   "Nsk": "kN",
-   "Type": "--"
- },
- {
    "Conductor_Name": "132C10",
    "Cross_section": "99.1",
    "Diameter": "14.5",

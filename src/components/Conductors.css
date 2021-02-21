@@ -1,0 +1,23 @@
+.conductorsTableContainer {
+    margin-top: 40vh;
+    overflow: auto;
+    max-height: 40vh;
+}
+
+.conductorsTable {
+    border-collapse: separate;
+}
+
+.conductorsTable th, .conductorsTable td {
+    border-bottom: none;
+}
+
+.conductorsTable thead {
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    background: white;
+    margin: 0;
+    padding: 0;
+
+}

@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
-import {Card, CardBody, Table, Button, Lis} from 'reactstrap';
+import {Card, CardBody, Table, Button, List} from 'reactstrap';
 import data from './data/PowerConductors.json';
 import Conductor from './Conductor.js';
-
+import './Conductors.css';
 
 
 class Conductors extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            conductors: []
+            conductors: [],
+            inputData: []
         };
     }
 
@@ -56,7 +57,11 @@ class Conductors extends React.PureComponent {
 
         return (
             <Card className="mb-4">
-                <div>Kalkulator</div>
+                <CardBody>
+                    <div className="calculatorContainer">
+                        Kalkulator
+                    </div>
+                </CardBody>
 
                 <CardBody>
                     <div className="conductorsTableContainer">
@@ -73,6 +78,18 @@ class Conductors extends React.PureComponent {
                                 <th>Nsn</th>
                                 <th>Nsk</th>
                                 <th>Type</th>
+                            </tr>
+                            <tr>
+                                <th>-</th>
+                                <th>mm<sup>2</sup></th>
+                                <th>mm</th>
+                                <th>N/m</th>
+                                <th>x10<sup>-6</sup></th>
+                                <th>mm<sup>2</sup>/Nx10<sup>-6</sup></th>
+                                <th>kN</th>
+                                <th>kN</th>
+                                <th>kN</th>
+                                <th>-</th>
                             </tr>
                             </thead>
                             <tbody>
