@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {Card, CardBody, Table} from 'reactstrap';
+import {Card, CardBody, Table, Button, Lis} from 'reactstrap';
 import data from './data/PowerConductors.json';
-import Conductor from './Conductor.js'
+import Conductor from './Conductor.js';
+
 
 
 class Conductors extends React.PureComponent {
@@ -55,6 +56,8 @@ class Conductors extends React.PureComponent {
 
         return (
             <Card className="mb-4">
+                <div>Kalkulator</div>
+
                 <CardBody>
                     <div className="conductorsTableContainer">
                         <Table className="conductorsTable">

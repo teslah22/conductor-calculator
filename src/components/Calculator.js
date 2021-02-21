@@ -7,7 +7,7 @@ class Calculator extends React.PureComponent {
     render() {
 
         return (
-            <Conductors/>
+           <div>Tu bedze kalkulator</div>
         )
     }
 }

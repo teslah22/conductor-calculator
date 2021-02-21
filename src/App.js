@@ -1,14 +1,14 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import Calculator from "./components/Calculator";
+import Conductors from "./components/Conductors";
+import {Container} from "reactstrap";
 
 function App() {
 
   return (
-    <div className="App">
-
-        <Calculator/>
-    </div>
+    <Container className="App">
+        <Conductors/>
+    </Container>
   );
 }
 
