@@ -80,8 +80,14 @@ class Conductors extends React.PureComponent {
                                 <Input className="tensionInput"/>
                                 <h3>Input span</h3>
                                 <Input className="spanInput"/>
-                                <h3>Input span</h3>
-                                <select className="conductorSelect"/>
+                                <h3>Select conductor</h3>
+                                <Input type="select" className="conductorSelect">
+                                    {
+                                        conductors.map(item => (
+                                            <option value={item.Conductor_Name} >{item.Conductor_Name}</option>
+                                        ))
+                                    }
+                                </Input>
                             </div>
                         </div>
                         <div>Results</div>
@@ -131,9 +137,9 @@ class Conductors extends React.PureComponent {
                 </CardBody>
 
             </Card>
-    );
+        );
     }
-    }
+}
 
 
-    export default Conductors;
+export default Conductors;
