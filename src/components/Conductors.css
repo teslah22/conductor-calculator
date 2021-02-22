@@ -1,5 +1,5 @@
 .conductorsTableContainer {
-    margin-top: 40vh;
+    margin-top: 20vh;
     overflow: auto;
     max-height: 40vh;
 }
@@ -20,4 +20,10 @@
     margin: 0;
     padding: 0;
 
+}
+
+.calculatorContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }

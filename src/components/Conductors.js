@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, CardBody, Table, Button, List} from 'reactstrap';
+import {Card, CardBody, Table, Button, List, Input} from 'reactstrap';
 import data from './data/PowerConductors.json';
 import Conductor from './Conductor.js';
 import './Conductors.css';
@@ -10,9 +10,23 @@ class Conductors extends React.PureComponent {
         super(props);
         this.state = {
             conductors: [],
-            inputData: []
+            inputData: [
+                {
+                    span_length: 350,
+                    tension_value: 10000,
+                }
+            ]
         };
     }
+
+    // handleInoutDataUpdate = (span, tension) => {
+    //     const {InputData} = this.state;
+    //     const NewInputData = InputData.map(row => {
+    //
+    //         }
+    //
+    //     )
+    // }
 
     componentDidMount() {
         this.getConductorsData();
@@ -57,9 +71,21 @@ class Conductors extends React.PureComponent {
 
         return (
             <Card className="mb-4">
+                <h1>Sag calculator</h1>
                 <CardBody>
                     <div className="calculatorContainer">
-                        Kalkulator
+                        <div>
+                            <div className="InputDataContainer">
+                                <h3>Input tension</h3>
+                                <Input className="tensionInput"/>
+                                <h3>Input span</h3>
+                                <Input className="spanInput"/>
+                                <h3>Input span</h3>
+                                <select className="conductorSelect"/>
+                            </div>
+                        </div>
+                        <div>Results</div>
+
                     </div>
                 </CardBody>
 
@@ -105,9 +131,9 @@ class Conductors extends React.PureComponent {
                 </CardBody>
 
             </Card>
-        );
+    );
     }
-}
+    }
 
 
-export default Conductors;
+    export default Conductors;
