@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, CardBody, Table, Button, List, Input} from 'reactstrap';
+import {Card, CardBody, Table, Button, List, Input, Label} from 'reactstrap';
 import data from './data/PowerConductors.json';
 import Conductor from './Conductor.js';
 import './Conductors.css';
@@ -10,23 +10,23 @@ class Conductors extends React.PureComponent {
         super(props);
         this.state = {
             conductors: [],
-            inputData: [
-                {
-                    span_length: 350,
-                    tension_value: 10000,
-                }
-            ]
+            spanQuantity: 1,
+            spanLengths: [],
+            referenceTension: 10000,
+            referenceTemperature: 10,
+            selectedConductor: "",
+            selectedTemperature: 80,
+
         };
+
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    // handleInoutDataUpdate = (span, tension) => {
-    //     const {InputData} = this.state;
-    //     const NewInputData = InputData.map(row => {
-    //
-    //         }
-    //
-    //     )
-    // }
+    handleChange(e) {
+        console.log("Conductor selected!");
+        this.setState({selectedConductor: e.target.value});
+        this.setState({spanQuantity: e.target.value});
+    }
 
     componentDidMount() {
         this.getConductorsData();
@@ -68,29 +68,70 @@ class Conductors extends React.PureComponent {
 
     render() {
         const {conductors} = this.state;
+        const {selectedConductor} = this.state;
+        const {spanQuantity} = this.state;
+        const spanQuantities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        console.log(this.state);
 
         return (
             <Card className="mb-4">
                 <h1>Sag calculator</h1>
                 <CardBody>
                     <div className="calculatorContainer">
-                        <div>
-                            <div className="InputDataContainer">
-                                <h3>Input tension</h3>
-                                <Input className="tensionInput"/>
-                                <h3>Input span</h3>
-                                <Input className="spanInput"/>
-                                <h3>Select conductor</h3>
-                                <Input type="select" className="conductorSelect">
-                                    {
-                                        conductors.map(item => (
-                                            <option value={item.Conductor_Name} >{item.Conductor_Name}</option>
-                                        ))
-                                    }
-                                </Input>
-                            </div>
+                        <div className="inputDataContainer">
+                            <h3>Input data</h3>
+                            <Table>
+                                <tbody>
+                                <tr>
+                                    <td><Label for="selectedConductor">Select conductor</Label></td>
+                                    <td><Input id="selectedConductor" type="select" value={selectedConductor}
+                                               onChange={this.handleChange} className="selectedConductor">
+                                        {
+                                            conductors.map(item => (
+                                                <option value={item.Conductor_Name}>{item.Conductor_Name}</option>
+                                            ))
+                                        }
+                                    </Input></td>
+                                </tr>
+                                <tr>
+                                    <td><Label for="selectSpanQuantity">Select a span quantity</Label></td>
+                                    <td><Input id="selectSpanQuantity" type="select" value={spanQuantity}
+                                               onChange={this.handleChange} className="selectSpanQuantity">
+                                        {
+                                            spanQuantities.map(item => (
+                                                <option value={item}>{item}</option>
+                                            ))
+                                        }
+                                    </Input></td>
+                                </tr>
+                                <tr>
+                                    <td><Label for="referenceTension">Reference tension</Label></td>
+                                    <td><Input id="referenceTension" className="referenceTension" placeholder="a reference tension goes here"/></td>
+                                </tr>
+                                <tr>
+                                    <td><Label for="referenceTemperature">Reference Temperature</Label></td>
+                                    <td><Input id="referenceTemperature" className="referenceTemperature" placeholder="a reference temperature goes here"/></td>
+                                </tr>
+                                <tr>
+                                    <td><Label for="selectedTemperature">Selected temperature</Label></td>
+                                    <td><Input id="selectedTemperature" className="selectedTemperature" placeholder="a selected temperature goes here"/></td>
+                                </tr>
+
+                                </tbody>
+                            </Table>
+
+
                         </div>
-                        <div>Results</div>
+                        <div className="resultsContainer">
+                            <h3>Sags</h3>
+                            <Table>
+                                <thead>
+                                <th>Structure number</th>
+                                <th>Span length</th>
+                                <th>Calculated sag</th>
+                                </thead>
+                            </Table>
+                        </div>
 
                     </div>
                 </CardBody>

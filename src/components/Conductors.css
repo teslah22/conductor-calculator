@@ -25,5 +25,14 @@
 .calculatorContainer {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+}
+
+.inputDataContainer, .resultsContainer {
+    width: 50%;
+    padding-right: 60px;
+}
+
+::placeholder,
+::-webkit-input-placeholder {
+    color: red;
 }
