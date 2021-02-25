@@ -19,13 +19,36 @@ class Conductors extends React.PureComponent {
 
         };
 
-        this.handleChange = this.handleChange.bind(this);
+        this.referenceTensionChange = this.referenceTensionChange.bind(this);
+        this.selectedConductorChange = this.selectedConductorChange.bind(this);
+        this.selectSpanQuantityChange = this.selectSpanQuantityChange.bind(this);
+        this.referenceTemperatureChange = this.referenceTemperatureChange.bind(this);
+        this.selectedTemperatureChange = this.selectedTemperatureChange.bind(this);
     }
 
-    handleChange(e) {
+    referenceTensionChange(e) {
+        console.log("Reference tension changed!");
+        this.setState({referenceTension: parseInt(e.target.value)});
+    }
+
+    selectedConductorChange(e) {
         console.log("Conductor selected!");
         this.setState({selectedConductor: e.target.value});
-        this.setState({spanQuantity: e.target.value});
+    }
+
+    selectSpanQuantityChange(e) {
+        console.log("Span quantity changed!");
+        this.setState({selectSpanQuantity: parseInt(e.target.value)});
+    }
+
+    referenceTemperatureChange(e) {
+        console.log("Reference temperature changed");
+        this.setState({referenceTemperature: parseInt(e.target.value)})
+    }
+
+    selectedTemperatureChange(e) {
+        console.log("Selected temperature changed");
+        this.setState({selectedTemperature: parseInt(e.target.value)})
     }
 
     componentDidMount() {
@@ -67,9 +90,7 @@ class Conductors extends React.PureComponent {
     }
 
     render() {
-        const {conductors} = this.state;
-        const {selectedConductor} = this.state;
-        const {spanQuantity} = this.state;
+        const {conductors, selectedConductor, spanQuantity, referenceTension, referenceTemperature, selectedTemperature} = this.state;
         const spanQuantities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         console.log(this.state);
 
@@ -85,7 +106,7 @@ class Conductors extends React.PureComponent {
                                 <tr>
                                     <td><Label for="selectedConductor">Select conductor</Label></td>
                                     <td><Input id="selectedConductor" type="select" value={selectedConductor}
-                                               onChange={this.handleChange} className="selectedConductor">
+                                               onChange={this.selectedConductorChange} className="selectedConductor">
                                         {
                                             conductors.map(item => (
                                                 <option value={item.Conductor_Name}>{item.Conductor_Name}</option>
@@ -96,7 +117,7 @@ class Conductors extends React.PureComponent {
                                 <tr>
                                     <td><Label for="selectSpanQuantity">Select a span quantity</Label></td>
                                     <td><Input id="selectSpanQuantity" type="select" value={spanQuantity}
-                                               onChange={this.handleChange} className="selectSpanQuantity">
+                                               onChange={this.selectSpanQuantityChange} className="selectSpanQuantity">
                                         {
                                             spanQuantities.map(item => (
                                                 <option value={item}>{item}</option>
@@ -106,15 +127,22 @@ class Conductors extends React.PureComponent {
                                 </tr>
                                 <tr>
                                     <td><Label for="referenceTension">Reference tension</Label></td>
-                                    <td><Input id="referenceTension" className="referenceTension" placeholder="a reference tension goes here"/></td>
+                                    <td><Input id="referenceTension" value={referenceTension}
+                                               onChange={this.referenceTensionChange} className="referenceTension"/>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td><Label for="referenceTemperature">Reference Temperature</Label></td>
-                                    <td><Input id="referenceTemperature" className="referenceTemperature" placeholder="a reference temperature goes here"/></td>
+                                    <td><Input id="referenceTemperature" value={referenceTemperature}
+                                               onChange={this.referenceTemperatureChange}
+                                               className="referenceTemperature"
+                                    /></td>
                                 </tr>
                                 <tr>
                                     <td><Label for="selectedTemperature">Selected temperature</Label></td>
-                                    <td><Input id="selectedTemperature" className="selectedTemperature" placeholder="a selected temperature goes here"/></td>
+                                    <td><Input id="selectedTemperature" value={selectedTemperature}
+                                               onChange={this.selectedTemperatureChange} className="selectedTemperature"
+                                    /></td>
                                 </tr>
 
                                 </tbody>
