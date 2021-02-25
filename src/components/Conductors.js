@@ -11,7 +11,10 @@ class Conductors extends React.PureComponent {
         this.state = {
             conductors: [],
             spanQuantity: 1,
+            spanQuantityArray: [],
             spanLengths: [],
+            structureNumbers: [],
+            calculatedSags: [],
             referenceTension: 10000,
             referenceTemperature: 10,
             selectedConductor: "",
@@ -50,6 +53,12 @@ class Conductors extends React.PureComponent {
         console.log("Selected temperature changed");
         this.setState({selectedTemperature: parseInt(e.target.value)})
     }
+
+    getSpanQuantityArray(spamQuantity) {
+        this.setState({spanQuantityArray: Array.from({length: 10}, (i, j) => j + 1)})
+        console.log('spanQuantityArray equals: ' + this.getSpanQuantityArray());
+    }
+
 
     componentDidMount() {
         this.getConductorsData();
@@ -90,8 +99,8 @@ class Conductors extends React.PureComponent {
     }
 
     render() {
-        const {conductors, selectedConductor, spanQuantity, referenceTension, referenceTemperature, selectedTemperature} = this.state;
-        const spanQuantities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        const {conductors, selectedConductor, spanQuantity, spanQuantityArray, referenceTension, referenceTemperature, selectedTemperature} = this.state;
+        const spanQuantityOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         console.log(this.state);
 
         return (
@@ -119,7 +128,7 @@ class Conductors extends React.PureComponent {
                                     <td><Input id="selectSpanQuantity" type="select" value={spanQuantity}
                                                onChange={this.selectSpanQuantityChange} className="selectSpanQuantity">
                                         {
-                                            spanQuantities.map(item => (
+                                            spanQuantityOptions.map(item => (
                                                 <option value={item}>{item}</option>
                                             ))
                                         }
@@ -158,6 +167,8 @@ class Conductors extends React.PureComponent {
                                 <th>Span length</th>
                                 <th>Calculated sag</th>
                                 </thead>
+
+
                             </Table>
                         </div>
 
