@@ -1,6 +1,5 @@
 // import React from 'react';
-// import Conductors from "components/Conductors";
-// import {Card, CardBody, Table, Button, List, Input, Label} from 'reactstrap';
+// import { Input } from 'reactstrap';
 //
 // class SpanInput extends React.PureComponent {
 //     constructor(props) {
@@ -13,14 +12,17 @@
 //     }
 //
 //     render() {
-//         const structureNumber = props.spanQuantity;
+//         const Id = this.props.Id;
+//         const CalculatedSag = 2.34;
 //
 //         return <tr>
-//             <td><Label for="structureNumber">Reference tension</Label></td>
-//             <td><Input id="structureNumber" value={referenceTension}
-//                        onChange={this.referenceTensionChange} className="referenceTension"/>
-//             </td>
+//             <td>{Id}</td>
+//             <td><Input className="structureNumber"/></td>
+//             <td><Input className="spanLength"/></td>
+//             <td>{CalculatedSag}</td>
 //         </tr>
 //     }
 //
 // }
+//
+// export default SpanInput;
