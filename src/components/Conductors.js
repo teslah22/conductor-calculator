@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, CardBody, Table, Button, List, Input, Label} from 'reactstrap';
+import {Card, CardBody, Table, Button, List, Input, Label, CardFooter, CardDeck} from 'reactstrap';
 import data from './data/PowerConductors.json';
 import Conductor from './Conductor.js';
 import './Conductors.css';
@@ -11,20 +11,96 @@ class Conductors extends React.PureComponent {
         this.state = {
             conductors: [],
             spanQuantity: 1,
-            spanLengths: [
-                {
-                    id: 1,
-                    spanLength: 250,
-                }
-            ],
-            structureNumbers: [],
-            calculatedSags: [],
             referenceTension: 10000,
             referenceTemperature: 10,
             selectedConductor: "",
             selectedTemperature: 80,
-            input: '',
-            spanLength: '',
+            spanLengths: [
+                {
+                    id: 1,
+                    spanLength: 250,
+                },
+                {
+                    id: 2,
+                    spanLength: 250,
+                },
+                {
+                    id: 3,
+                    spanLength: 250,
+                },
+                {
+                    id: 4,
+                    spanLength: 250,
+                },
+                {
+                    id: 5,
+                    spanLength: 250,
+                },
+                {
+                    id: 6,
+                    spanLength: 250,
+                },
+                {
+                    id: 7,
+                    spanLength: 250,
+                },
+                {
+                    id: 8,
+                    spanLength: 250,
+                },
+                {
+                    id: 9,
+                    spanLength: 250,
+                },
+                {
+                    id: 10,
+                    spanLength: 250,
+                },
+
+            ],
+            structureNumbers: [],
+            calculatedSags: [
+                {
+                    id: 1,
+                    calculatedSag: 3.50
+                },
+                {
+                    id: 2,
+                    calculatedSag: 3.50
+                },
+                {
+                    id: 3,
+                    calculatedSag: 3.50
+                },
+                {
+                    id: 4,
+                    calculatedSag: 3.50
+                },
+                {
+                    id: 5,
+                    calculatedSag: 3.50
+                },
+                {
+                    id: 6,
+                    calculatedSag: 3.50
+                },
+                {
+                    id: 7,
+                    calculatedSag: 3.50
+                },
+                {
+                    id: 8,
+                    calculatedSag: 3.50
+                },
+                {
+                    id: 9,
+                    calculatedSag: 3.50
+                },
+                {
+                    id: 10,
+                    calculatedSag: 3.50
+                },
+            ],
 
         };
 
@@ -33,7 +109,7 @@ class Conductors extends React.PureComponent {
         this.selectSpanQuantityChange = this.selectSpanQuantityChange.bind(this);
         this.referenceTemperatureChange = this.referenceTemperatureChange.bind(this);
         this.selectedTemperatureChange = this.selectedTemperatureChange.bind(this);
-        this.saveSpanLength = this.saveSpanLength.bind(this);
+/*        this.saveSpanLength = this.saveSpanLength.bind(this);*/
     };
 
     referenceTensionChange(e) {
@@ -62,9 +138,8 @@ class Conductors extends React.PureComponent {
         this.setState({selectedTemperature: parseInt(e.target.value)})
     };
 
-    saveSpanLength = (e, id) => {
-        this.setState({id: e.target.value});
-    };
+
+
 
 
     componentDidMount() {
@@ -105,7 +180,7 @@ class Conductors extends React.PureComponent {
     };
 
     render() {
-        const {conductors, selectedConductor, spanQuantity, referenceTension, referenceTemperature, selectedTemperature} = this.state;
+        const {conductors, selectedConductor, spanQuantity, spanLengths, calculatedSags, referenceTension, referenceTemperature, selectedTemperature} = this.state;
         const spanQuantityOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         const spanQuantityArray = Array.from({length: spanQuantity}, (i, j) => j + 1)
         console.log("spanQuantityArray: " + spanQuantityArray);
@@ -179,17 +254,16 @@ class Conductors extends React.PureComponent {
                                 </thead>
 
                                 <tbody>
-
                                 {
                                     spanQuantityArray.map(
                                         id => (
                                             <tr>
                                                 <td>{id}</td>
                                                 <td><Input/></td>
-                                                <td><Input id={id} onChange={this.saveSpanLength}
+                                                <td><Input id={id}
                                                            className="spanInput"/>
                                                 </td>
-                                                <td>2,34</td>
+                                                <td>{calculatedSags[id - 1].calculatedSag}</td>
 
                                             </tr>
                                         )
@@ -197,7 +271,14 @@ class Conductors extends React.PureComponent {
                                 }
 
                                 </tbody>
+
                             </Table>
+
+                            <CardBody>
+                                <Button>Save data</Button>
+                                <Button>Calculate sags</Button>
+                            </CardBody>
+
                         </div>
 
                     </div>
