@@ -11,13 +11,20 @@ class Conductors extends React.PureComponent {
         this.state = {
             conductors: [],
             spanQuantity: 1,
-            spanLengths: [],
+            spanLengths: [
+                {
+                    id: 1,
+                    spanLength: 250,
+                }
+            ],
             structureNumbers: [],
             calculatedSags: [],
             referenceTension: 10000,
             referenceTemperature: 10,
             selectedConductor: "",
             selectedTemperature: 80,
+            input: '',
+            spanLength: '',
 
         };
 
@@ -26,38 +33,43 @@ class Conductors extends React.PureComponent {
         this.selectSpanQuantityChange = this.selectSpanQuantityChange.bind(this);
         this.referenceTemperatureChange = this.referenceTemperatureChange.bind(this);
         this.selectedTemperatureChange = this.selectedTemperatureChange.bind(this);
-    }
+        this.saveSpanLength = this.saveSpanLength.bind(this);
+    };
 
     referenceTensionChange(e) {
         console.log("Reference tension changed!");
         this.setState({referenceTension: parseInt(e.target.value)});
-    }
+    };
 
     selectedConductorChange(e) {
         console.log("Conductor selected!");
         this.setState({selectedConductor: e.target.value});
-    }
+    };
 
 
     selectSpanQuantityChange(e) {
         console.log("Span quantity changed!");
         this.setState({spanQuantity: parseInt(e.target.value)});
-    }
+    };
 
     referenceTemperatureChange(e) {
-        console.log("Reference temperature changed");
+        console.log("Reference temperature changed!");
         this.setState({referenceTemperature: parseInt(e.target.value)})
-    }
+    };
 
     selectedTemperatureChange(e) {
-        console.log("Selected temperature changed");
+        console.log("Selected temperature changed!");
         this.setState({selectedTemperature: parseInt(e.target.value)})
-    }
+    };
+
+    saveSpanLength = (e, id) => {
+        this.setState({id: e.target.value});
+    };
 
 
     componentDidMount() {
         this.getConductorsData();
-    }
+    };
 
     getConductorsData() {
         const conductors = data.map((item) => {
@@ -90,7 +102,7 @@ class Conductors extends React.PureComponent {
         });
         this.setState({conductors});
         console.log(conductors);
-    }
+    };
 
     render() {
         const {conductors, selectedConductor, spanQuantity, referenceTension, referenceTemperature, selectedTemperature} = this.state;
@@ -173,9 +185,11 @@ class Conductors extends React.PureComponent {
                                         id => (
                                             <tr>
                                                 <td>{id}</td>
-                                                <td><Input></Input></td>
-                                                <td><Input></Input></td>
-                                                <td>2.34</td>
+                                                <td><Input/></td>
+                                                <td><Input id={id} onChange={this.saveSpanLength}
+                                                           className="spanInput"/>
+                                                </td>
+                                                <td>2,34</td>
 
                                             </tr>
                                         )
