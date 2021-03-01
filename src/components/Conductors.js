@@ -109,7 +109,7 @@ class Conductors extends React.PureComponent {
         this.selectSpanQuantityChange = this.selectSpanQuantityChange.bind(this);
         this.referenceTemperatureChange = this.referenceTemperatureChange.bind(this);
         this.selectedTemperatureChange = this.selectedTemperatureChange.bind(this);
-/*        this.saveSpanLength = this.saveSpanLength.bind(this);*/
+        this.saveSpanLength = this.saveSpanLength.bind(this);
     };
 
     referenceTensionChange(e) {
@@ -138,9 +138,13 @@ class Conductors extends React.PureComponent {
         this.setState({selectedTemperature: parseInt(e.target.value)})
     };
 
-
-
-
+    saveSpanLength (e) {
+        let spanLengths = [...this.state.spanLengths];
+        let spanItem = {...spanLengths[e.target.getAttribute('id')]-1};
+        spanItem.spanLength = parseInt(e.target.value);
+        spanLengths[e.target.getAttribute('id')-1] = spanItem;
+        this.setState({spanLengths});
+    }
 
     componentDidMount() {
         this.getConductorsData();
@@ -180,7 +184,7 @@ class Conductors extends React.PureComponent {
     };
 
     render() {
-        const {conductors, selectedConductor, spanQuantity, spanLengths, calculatedSags, referenceTension, referenceTemperature, selectedTemperature} = this.state;
+        const {conductors, selectedConductor, spanQuantity, calculatedSags, referenceTension, referenceTemperature, selectedTemperature} = this.state;
         const spanQuantityOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         const spanQuantityArray = Array.from({length: spanQuantity}, (i, j) => j + 1)
         console.log("spanQuantityArray: " + spanQuantityArray);
@@ -206,7 +210,7 @@ class Conductors extends React.PureComponent {
                                         }
                                     </Input></td>
                                 </tr>
-                                {/*Unfinished feature - span number selector related toSpanInput.js*/}
+
                                 <tr>
                                     <td><Label for="selectSpanQuantity">Select a span quantity</Label></td>
                                     <td><Input id="selectSpanQuantity" type="select" value={spanQuantity}
@@ -260,8 +264,7 @@ class Conductors extends React.PureComponent {
                                             <tr>
                                                 <td>{id}</td>
                                                 <td><Input/></td>
-                                                <td><Input id={id}
-                                                           className="spanInput"/>
+                                                <td><Input id={id} onChange={this.saveSpanLength} className="spanInput"/>
                                                 </td>
                                                 <td>{calculatedSags[id - 1].calculatedSag}</td>
 
@@ -275,7 +278,7 @@ class Conductors extends React.PureComponent {
                             </Table>
 
                             <CardBody>
-                                <Button>Save data</Button>
+                                <Button >Save data</Button>
                                 <Button>Calculate sags</Button>
                             </CardBody>
 
